@@ -15,7 +15,7 @@ public class Practica1_201504100 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
+        //Codigo sincronizado con GitHub Christopher Lopez 201504100
     }
     
 }
