@@ -9,14 +9,9 @@ package practica1_201504100;
  *
  * @author cr-al
  */
-public class Practica1_201504100 {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        VentanaXml archivoXML= new VentanaXml();
-        archivoXML.setVisible(true);
-    }
+public class Celda {
+    public Boolean doble= false;
+    public Boolean triple = true;
+    public String letra;
     
 }
