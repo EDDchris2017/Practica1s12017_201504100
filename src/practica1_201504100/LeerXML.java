@@ -60,7 +60,7 @@ public class LeerXML {
                     Element casilla = (Element)lista_casilla.get(j);
                     String x= casilla.getChildTextTrim("x");
                     String y = casilla.getChildTextTrim("y");
-                    this.matriz_tablero[Integer.parseInt(x)][Integer.parseInt(y)].doble=true;
+                    this.matriz_tablero[Integer.parseInt(x)-1][Integer.parseInt(y)-1].doble=true;
                     JOptionPane.showMessageDialog(null,"x: " +x +" y: "+y);
                     
                 }
@@ -75,7 +75,7 @@ public class LeerXML {
                     Element casilla = (Element)lista_casilla.get(j);
                     String x= casilla.getChildTextTrim("x");
                     String y = casilla.getChildTextTrim("y");
-                    this.matriz_tablero[Integer.parseInt(x)][Integer.parseInt(y)].triple=true;
+                    this.matriz_tablero[Integer.parseInt(x)-1][Integer.parseInt(y)-1].triple=true;
                     JOptionPane.showMessageDialog(null,"triple x: " +x +" y: "+y);
                     
                 }
@@ -99,7 +99,7 @@ public class LeerXML {
    }
    public void llenarMatriz(){
        for(int i=0; i < Integer.parseInt(this.dimension);i++){
-           for(int j=0; i < Integer.parseInt(this.dimension);i++){
+           for(int j=0; j < Integer.parseInt(this.dimension);j++){
                Celda celda = new Celda();
                this.matriz_tablero[i][j]=celda;
            }
