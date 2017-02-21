@@ -50,6 +50,11 @@ public class VentanaXml extends javax.swing.JFrame {
         boton_jugar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         boton_jugar.setText("Jugar");
         boton_jugar.setEnabled(false);
+        boton_jugar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_jugarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -89,6 +94,11 @@ public class VentanaXml extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,e.toString());
         }
     }//GEN-LAST:event_leer_archivoActionPerformed
+
+    private void boton_jugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_jugarActionPerformed
+        VentanaUsuarios ventana_usuarios=new VentanaUsuarios();
+        ventana_usuarios.setVisible(true);
+    }//GEN-LAST:event_boton_jugarActionPerformed
 
     /**
      * @param args the command line arguments

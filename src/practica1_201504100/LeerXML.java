@@ -5,6 +5,7 @@
  */
 package practica1_201504100;
 
+import Listas.Lista_Simple;
 import java.io.File;
 
 import org.jespxml.*;
@@ -28,6 +29,7 @@ public class LeerXML {
     public File xml;
     public String dimension;
     public Celda matriz_tablero[][];
+    public Lista_Simple lista_simple= new Lista_Simple();
     public void cargarXML(){
         try {
             //Se crear el documento a partir del archivo
@@ -78,6 +80,19 @@ public class LeerXML {
                     this.matriz_tablero[Integer.parseInt(x)-1][Integer.parseInt(y)-1].triple=true;
                     JOptionPane.showMessageDialog(null,"triple x: " +x +" y: "+y);
                     
+                }
+                
+                
+            }
+            List lista_diccionario= raiz.getChildren("diccionario");
+            for(int i=0; i <lista_diccionario.size();i++){
+                Element palabrasxml = (Element) lista_diccionario.get(i);
+                List palabras = palabrasxml.getChildren();
+                for(int j=0;j < palabras.size();j++){
+                    Element palabra = (Element) palabras.get(j);
+                    String palabra_dic = palabra.getText();
+                    //Guuardar diccionario en la lista simple
+                    this.lista_simple.agregarAlFinal(palabra_dic);
                 }
                 
                 

@@ -15,8 +15,10 @@ public class Practica1_201504100 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        VentanaXml archivoXML= new VentanaXml();
-        archivoXML.setVisible(true);
+        //VentanaXml archivoXML= new VentanaXml();
+        //archivoXML.setVisible(true);
+        VentanaUsuarios ventana= new VentanaUsuarios();
+        ventana.setVisible(true);
     }
     
 }
