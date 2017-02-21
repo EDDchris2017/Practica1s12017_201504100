@@ -32,9 +32,11 @@ public class Lista_Circular {
     public int getTamaño(){
         return this.tamaño;
     }
-    public void agregarAlFinal(String nombre){
+    public void agregarAlFinal(String nombre,Lista_Simple_Fichas lista,int punteo){
         Usuario nuevo= new Usuario();
         nuevo.setNombre(nombre);
+        nuevo.setLista_fichas(lista);
+        nuevo.setPunteo(punteo);
         //Verificar si la lista no esta vacia
         if(estaVacia()){
             this.inicio = nuevo;

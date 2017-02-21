@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
  *
  * @author cr-al
  */
-public class Lista_Simple {
+public class Lista_Simple_Diccionario {
     private Palabra inicio;
     private int tamaño;
     

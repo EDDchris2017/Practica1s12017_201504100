@@ -15,6 +15,7 @@ import javax.swing.JOptionPane;
  */
 public class VentanaXml extends javax.swing.JFrame {
     public File xml;
+    
     /**
      * Creates new form VentanaXml
      */

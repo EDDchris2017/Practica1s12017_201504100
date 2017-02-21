@@ -5,7 +5,7 @@
  */
 package practica1_201504100;
 
-import Listas.Lista_Simple;
+import Listas.Lista_Simple_Diccionario;
 import java.io.File;
 
 import org.jespxml.*;
@@ -29,7 +29,7 @@ public class LeerXML {
     public File xml;
     public String dimension;
     public Celda matriz_tablero[][];
-    public Lista_Simple lista_simple= new Lista_Simple();
+    public Lista_Simple_Diccionario lista_simple= new Lista_Simple_Diccionario();
     public void cargarXML(){
         try {
             //Se crear el documento a partir del archivo

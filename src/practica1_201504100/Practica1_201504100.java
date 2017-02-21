@@ -10,7 +10,7 @@ package practica1_201504100;
  * @author cr-al
  */
 public class Practica1_201504100 {
-
+    public static insertarFichas insertar_fichas= new insertarFichas();
     /**
      * @param args the command line arguments
      */
@@ -19,6 +19,8 @@ public class Practica1_201504100 {
         //archivoXML.setVisible(true);
         VentanaUsuarios ventana= new VentanaUsuarios();
         ventana.setVisible(true);
+      insertar_fichas.insertarFichas();
+       
     }
     
 }

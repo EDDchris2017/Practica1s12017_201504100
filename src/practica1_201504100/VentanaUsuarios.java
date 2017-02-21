@@ -5,7 +5,8 @@
  */
 package practica1_201504100;
 
-import Listas.Lista_Circular;
+import Listas.*;
+import Nodos.*;
 import javax.swing.JOptionPane;
 
 /**
@@ -95,13 +96,20 @@ Lista_Circular lista_usuarios= new Lista_Circular();
                 JOptionPane.showMessageDialog(null,"Este usuario ya existe");
             }
         }else{
-            lista_usuarios.agregarAlFinal(texto_usuarios.getText());
+            lista_usuarios.agregarAlFinal(texto_usuarios.getText(), recogerFichas(),0);
             System.out.println("Usuario ingresado");
         }
-        insertarFichas insertar_fichas=new insertarFichas();
-        insertar_fichas.insertarFichas();
-    }//GEN-LAST:event_jButton1ActionPerformed
 
+    }//GEN-LAST:event_jButton1ActionPerformed
+   public Lista_Simple_Fichas recogerFichas(){
+       Lista_Simple_Fichas lista_simple =new Lista_Simple_Fichas();
+       for(int i=0;i<7;i++){
+           Ficha ficha= Practica1_201504100.insertar_fichas.cola_fichas.eliminarCola();
+           lista_simple.agregarAlFinal(ficha.getLetra(),ficha.getPuntuacion());
+           
+       }
+       return lista_simple;
+   }
     /**
      * @param args the command line arguments
      */
