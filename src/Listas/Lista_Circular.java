@@ -71,16 +71,36 @@ public class Lista_Circular {
         }
         return retorno;
     }
+    //Metodo para regresar el objeto Usuario
+        public Usuario getUsuario(String valor){
+                 int contador=0;
+        Usuario auxiliar= inicio ;
+        Usuario retornar=null;
+        boolean encontrado = false;
+        do{
+            if(valor.equals(auxiliar.getNombre())){
+                encontrado=true;
+                retornar=auxiliar;
+            }else{
+                contador=contador+1;
+                auxiliar= auxiliar.getSiguiente();
+            }
+        }while(auxiliar!=inicio && encontrado!=true);
+        return retornar;
+    }
+        
     public boolean buscarUsuario(String valor){
+        int contador=0;
         Usuario auxiliar= inicio ;
         boolean encontrado = false;
         do{
             if(valor==auxiliar.getNombre()){
                 encontrado=true;
             }else{
+                contador=contador+1;
                 auxiliar= auxiliar.getSiguiente();
             }
-        }while(auxiliar!=null && encontrado!=true);
+        }while(auxiliar!=inicio && encontrado!=true);
         return encontrado;
     }
     
@@ -105,7 +125,13 @@ public class Lista_Circular {
             tamaño--;
         }
     }
-    public void imprimir(){
-        
+    public String imprimirReporte(){
+        String codigografo="";
+        Usuario auxiliar = this.inicio;
+        for(int i=0;i<tamaño;i++){
+            codigografo=codigografo+ auxiliar.getNombre().replaceAll(" ", "_")+"->"+auxiliar.getSiguiente().getNombre().replaceAll(" ", "_")+"\n";
+            auxiliar=auxiliar.getSiguiente();
+        }
+        return codigografo;
     }
 }

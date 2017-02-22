@@ -5,6 +5,7 @@
  */
 package Listas;
 
+import Nodos.Ficha;
 import Nodos.Palabra;
 import javax.swing.JOptionPane;
 
@@ -121,5 +122,21 @@ public class Lista_Simple_Diccionario {
               }
           }
       }
-      
+         public String imprimirReporte() {
+        String codigografo="";
+        if (!estaVacia()) {
+            Palabra auxiliar = inicio;
+            int i = 0;
+            while (auxiliar.getSiguiente() != null) {
+                i++;
+                if(auxiliar.getSiguiente()!=null){
+                codigografo=codigografo+ auxiliar.getContenido().replaceAll(" ", "_")+"__"+i+"->"+auxiliar.getSiguiente().getContenido().replaceAll(" ", "_")+"__"+(i+1)+"\n";
+                auxiliar = auxiliar.getSiguiente();
+                }
+                //Incrementa el contador
+                
+            }
+        }
+        return codigografo;
+    } 
 }

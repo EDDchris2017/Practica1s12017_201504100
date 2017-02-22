@@ -7,6 +7,9 @@ package practica1_201504100;
 
 import Listas.*;
 import Nodos.*;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -14,7 +17,9 @@ import javax.swing.JOptionPane;
  * @author cr-al
  */
 public class VentanaUsuarios extends javax.swing.JFrame {
-Lista_Circular lista_usuarios= new Lista_Circular();
+
+    public static Lista_Circular lista_usuarios = new Lista_Circular();
+
     /**
      * Creates new form VentanaUsuarios
      */
@@ -35,6 +40,7 @@ Lista_Circular lista_usuarios= new Lista_Circular();
         jLabel2 = new javax.swing.JLabel();
         texto_usuarios = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -53,24 +59,36 @@ Lista_Circular lista_usuarios= new Lista_Circular();
             }
         });
 
+        jButton2.setText("Iniciar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(100, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(texto_usuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(78, 78, 78))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1))
-                        .addGap(113, 113, 113))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(107, 107, 107))))
+                        .addGap(107, 107, 107))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(texto_usuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(78, 78, 78))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel1))
+                                .addGap(113, 113, 113))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -81,35 +99,53 @@ Lista_Circular lista_usuarios= new Lista_Circular();
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(texto_usuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2))
+                .addGap(44, 44, 44))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         if(lista_usuarios.getTamaño()>0){
-             Boolean buscado = lista_usuarios.buscarUsuario(texto_usuarios.getText());
-            if (buscado == true){
-                JOptionPane.showMessageDialog(null,"Este usuario ya existe");
+        Boolean buscado = false;
+        if (lista_usuarios.getTamaño() > 0) {
+            buscado = lista_usuarios.buscarUsuario(texto_usuarios.getText());
+            if (buscado == true) {
+                JOptionPane.showMessageDialog(null, "Este usuario ya existe");
             }
-        }else{
-            lista_usuarios.agregarAlFinal(texto_usuarios.getText(), recogerFichas(),0);
+
+        }
+        if (buscado == false) {
+            lista_usuarios.agregarAlFinal(texto_usuarios.getText(), recogerFichas(), 0);
             System.out.println("Usuario ingresado");
         }
 
     }//GEN-LAST:event_jButton1ActionPerformed
-   public Lista_Simple_Fichas recogerFichas(){
-       Lista_Simple_Fichas lista_simple =new Lista_Simple_Fichas();
-       for(int i=0;i<7;i++){
-           Ficha ficha= Practica1_201504100.insertar_fichas.cola_fichas.eliminarCola();
-           lista_simple.agregarAlFinal(ficha.getLetra(),ficha.getPuntuacion());
-           
-       }
-       return lista_simple;
-   }
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        Reportes reporte = new Reportes();
+        try {
+            reporte.Reporte_Usuarios();
+            reporte.Reporte_Fichas_Pendientes();
+            reporte.Reporte_Fichas_Usuarios("user1");
+            reporte.Reporte_Diccionario();
+        } catch (IOException ex) {
+            Logger.getLogger(VentanaUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+    public Lista_Simple_Fichas recogerFichas() {
+        Lista_Simple_Fichas lista_simple = new Lista_Simple_Fichas();
+        for (int i = 0; i < 7; i++) {
+            Ficha ficha = Practica1_201504100.insertar_fichas.cola_fichas.eliminarCola();
+            lista_simple.agregarAlFinal(ficha.getLetra(), ficha.getPuntuacion());
+
+        }
+        return lista_simple;
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -147,6 +183,7 @@ Lista_Circular lista_usuarios= new Lista_Circular();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField texto_usuarios;

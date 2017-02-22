@@ -29,7 +29,7 @@ public class LeerXML {
     public File xml;
     public String dimension;
     public Celda matriz_tablero[][];
-    public Lista_Simple_Diccionario lista_simple= new Lista_Simple_Diccionario();
+    public static Lista_Simple_Diccionario lista_simple= new Lista_Simple_Diccionario();
     public void cargarXML(){
         try {
             //Se crear el documento a partir del archivo
