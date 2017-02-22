@@ -126,7 +126,9 @@ public class VentanaUsuarios extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        Reportes reporte = new Reportes();
+        Tablero tablero=new Tablero();
+        tablero.setVisible(true);
+        /*        Reportes reporte = new Reportes();
         try {
             reporte.Reporte_Usuarios();
             reporte.Reporte_Fichas_Pendientes();
@@ -134,7 +136,7 @@ public class VentanaUsuarios extends javax.swing.JFrame {
             reporte.Reporte_Diccionario();
         } catch (IOException ex) {
             Logger.getLogger(VentanaUsuarios.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }*/
     }//GEN-LAST:event_jButton2ActionPerformed
     public Lista_Simple_Fichas recogerFichas() {
         Lista_Simple_Fichas lista_simple = new Lista_Simple_Fichas();
